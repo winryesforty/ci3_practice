@@ -67,7 +67,7 @@
                 Add User
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('dashboard3') ?>">
                 <span data-feather="shopping-cart"></span>
                 Dashboard3
@@ -84,7 +84,7 @@
                 <span data-feather="bar-chart-2"></span>
                 Dashboard5
                 </a>
-            </li>
+            </li> -->
             </ul>
         </div>
     </nav>

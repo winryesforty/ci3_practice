@@ -2,7 +2,7 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Add User</h1>
-      <div class="btn-toolbar mb-2 mb-md-0">
+      <!-- <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
           <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
           <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
@@ -11,7 +11,7 @@
           <span data-feather="calendar"></span>
           This week
         </button>
-      </div>
+      </div> -->
     </div>
 
     <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
@@ -32,7 +32,7 @@
                 <div class="w-100 h-100 border border-primary">
                     <img id="frame" src="<?php echo base_url('assets/images/default.jpg'); ?>" class="img-fluid w-100 h-100"/>
                 </div>
-                <div class="w-100 h-100 mb-5 border border-solid border-gray" style="">
+                <div class="w-100 h-100 mb-5 border border-solid border-gray">
                     <input class="form-control" type="file" name="user_image" id="formFile" onchange="preview()">
                     <!-- <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button> -->
                 </div>

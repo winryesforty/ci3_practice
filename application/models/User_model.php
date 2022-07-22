@@ -29,7 +29,6 @@ class User_model extends CI_Model {
 
         public function insert_user()
         {
-
                 $config['upload_path']          = './assets/images/';
                 $config['allowed_types']        = 'gif|jpg|png|jfif';
                 $config['max_size']             = 19000;
@@ -95,6 +94,13 @@ class User_model extends CI_Model {
                 $this->province         = $this->input->post('province');
 
                 return $this->db->update('user', $this, array('id' => $this->input->post('id')));
+        }
+        public function delete_user($id=NULL)
+        {
+                if($id!==NULL)
+                {
+                        return $this->db->delete('user', array('id' => $id));
+                }
         }
 
 }

@@ -56,6 +56,14 @@ class Usercontroller extends CI_Controller {
 		}
 	}
 	
+	public function user_delete($id=NULL)
+	{
+		if($this->User_model->delete_user($id))
+		{
+			$this->session->set_flashdata('Message', "User Successfully Deleted");
+			redirect('');
+		}
+	}
 	public function newUser()
 	{
 		$config['upload_path']          = './assets/images/';

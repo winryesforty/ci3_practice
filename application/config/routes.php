@@ -56,6 +56,7 @@ $route['dashboard4'] = 'Usercontroller/dashboard4';
 $route['dashboard5'] = 'Usercontroller/dashboard5';
 $route['usersubmit'] = 'Usercontroller/newUser';
 $route['updateuser'] = 'Usercontroller/updateuser';
+$route['user_delete/(:any)'] = 'Usercontroller/user_delete/$1';
 $route['new'] = 'welcome/new';
 $route['items'] = 'Usercontroller';
 $route['404_override'] = '';
