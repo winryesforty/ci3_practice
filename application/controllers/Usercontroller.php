@@ -60,7 +60,7 @@ class Usercontroller extends CI_Controller {
 	{
 		if($this->User_model->delete_user($id))
 		{
-			$this->session->set_flashdata('Message', "User Successfully Deleted");
+			$this->session->set_flashdata('message', "User Successfully Deleted");
 			redirect('');
 		}
 	}
@@ -73,12 +73,7 @@ class Usercontroller extends CI_Controller {
 		$config['max_height']           = 5768;
 		$config['file_name']			= $this->input->post('last_name').$this->input->post('first_name');
 
-		// $this->load->library('upload', $config);
-		// echo $$config['upload_path'];
 		$this->upload->initialize($config);
-		//$file = $this->upload->data();
-		// var_dump($file);
-		// exit;
 		
 		if ( ! $this->upload->do_upload('user_image') )
 		{

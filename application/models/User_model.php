@@ -26,6 +26,13 @@ class User_model extends CI_Model {
 		$query = $this->db->get('user');
                 return $query->result();
 	}
+        public function get_user_by_id($id=NULL)
+        {
+                if($id!==NULL)
+                {
+                        return $this->db->get_where('user', array("id"=>$id))->result_array();
+                }
+        }
 
         public function insert_user()
         {
@@ -99,6 +106,11 @@ class User_model extends CI_Model {
         {
                 if($id!==NULL)
                 {
+                        $user = $this->get_user_by_id($id);
+                        // var_dump($user[0]['image_name']);
+                        // exit;
+                        unlink("./assets/images/".$user[0]['image_name']);
+
                         return $this->db->delete('user', array('id' => $id));
                 }
         }

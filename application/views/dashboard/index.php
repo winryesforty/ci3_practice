@@ -1,7 +1,6 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
         <!-- <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -17,7 +16,7 @@
       <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
       <div class="table-responsive">
-        <h2>Users</h2>
+        <h2>Users List</h2>
         <?php if($this->session->flashdata('message')) { ?>
               <p class="container alert alert-success"> <?php echo $this->session->flashdata('message'); ?></p>
         <?php } ?>
@@ -38,13 +37,12 @@
                   <td class='text-capitalize'><?php echo $user->first_name; ?></td>
                   <td class='text-capitalize'><?php echo $user->middle_name; ?></td>
                   <td class='text-capitalize'><?php echo $user->last_name; ?></td>
-                  <td class='text-capitalize bg-red'><img id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="frame img-fluid w-50 h-50"/></td>
+                  <td class='text-capitalize bg-red'><img class="w-25 p-4" id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="frame img-fluid w-50 h-50"/></td>
                   <td class='text-capitalize'>
                     <!-- <button type="button" class="d-inline btn btn-success">View</button>&nbsp; -->
-                    <button type="button" class="d-inline btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $user->id; ?>">View</button><br/>
-                    <button type="button" class="d-inline btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $user->id; ?>">Edit</button><br/>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $user->id; ?>">Delete</button>
-                    <!-- <button type="button" class="d-inline btn btn-danger">Delete</button> -->
+                    <button type="button" class="d-inline btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $user->id; ?>">View</button><br/>
+                    <button type="button" class="d-inline btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $user->id; ?>">Edit</button><br/>
+                    <button type="button" class="btn btn-danger mb-2" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $user->id; ?>">Delete</button>
                   </td>
                   <form method="POST" action="updateuser" enctype="multipart/form-data">
                     <input type="text" name="id" class="form-control d-none" placeholder="" value="<?php echo $user->id; ?>" />
