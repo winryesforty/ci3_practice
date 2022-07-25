@@ -67,7 +67,7 @@ class Usercontroller extends CI_Controller {
 	public function newUser()
 	{
 		$config['upload_path']          = './assets/images/';
-		$config['allowed_types']        = 'gif|jpg|png|jfif';
+		$config['allowed_types']        = 'gif|jpg|png|jfif|jpeg';
 		$config['max_size']             = 19000;
 		$config['max_width']            = 5024;
 		$config['max_height']           = 5768;

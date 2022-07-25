@@ -19,24 +19,18 @@
     <div class="table-responsive">
         
     <h4>User Info</h4>
-    <?php 
-            if($this->session->flashdata('message'))
-            {
-        ?>
+    <?php if($this->session->flashdata('message')){ ?>
               <p class="container alert alert-success"> <?php echo $this->session->flashdata('message'); ?></p>
-        <?php
-            }
-        ?>
+    <?php } ?>
         <form class="needs-validation" novalidate method="POST" action="usersubmit" enctype="multipart/form-data">
-            <div class="container col-sm-3 w-10 h-10">
+            <!-- <div class="container col-sm-3 w-10 h-10">
                 <div class="w-100 h-100 border border-primary">
                     <img id="frame" src="<?php echo base_url('assets/images/default.jpg'); ?>" class="img-fluid w-100 h-100"/>
                 </div>
                 <div class="w-100 h-100 mb-5 border border-solid border-gray">
                     <input class="form-control" type="file" name="user_image" id="formFile" onchange="preview()">
-                    <!-- <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button> -->
                 </div>
-            </div>
+            </div> -->
 
             <script>
                 function preview() {
@@ -47,7 +41,112 @@
                     frame.src = "";
                 }
             </script>
-            <div class="form-row">
+            <div class="modal-body add-modal-body">
+                <div class="row d-flex flex-row-reverse">
+                    <div class="col-md-4 justify-content-center">
+                        <!-- 
+                        <div class="col-md-10 text-center flex-fill">
+                            <label for="validationCustom01">Profile Picture</label>
+                            <img id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="frame img-fluid w-100 h-100"/>
+                            <input class="formFile form-control" type="file" name="user_image" class="formFile">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div> 
+                        -->
+                        <div class="col-md-10 text-center flex-fill">
+                            <label for="validationCustom01">Profile Picture</label>
+                            <img id="frame" src="<?php echo base_url('assets/images/default.jpg'); ?>" class="img-fluid"/>
+                            <input class="form-control formFile" type="file" name="user_image" id="formFile" onchange="preview()" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label>First name</label>
+                            <div class="col-md-12 mb-3">
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" name="first_name" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label>Middle name</label>
+                            <div class="col-md-12 mb-3">
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="Middle name" value="" name="middle_name" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationCustom02">Last name</label>
+                            <div class="col-md-12 mb-3">
+                                <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" name="last_name" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-row col-md-12 mb-3">
+                    <label>Street Address</label>
+                    <div class="col-md-12 mb-3">
+                        <input type="text" value='' name="street_address" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom03">City</label>
+                        <div class="col-md-12 mb-3">
+                        <input type="text" value='' name="city" type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                    <label for="validationCustom04">Province</label>
+                    <div class="col-md-12 mb-3">
+                        <input value='' name="province" type="text" class="form-control" id="validationCustom04" placeholder="Province" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                    <label for="validationCustom05">Zip Code</label>
+                    <div class="col-md-12 mb-3">
+                        <input value='' name="zip_code" type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-row">
                 <div class="col-sm-4 mb-3">
                     <label for="validationCustom01">First name</label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" name="first_name" required>
@@ -96,8 +195,8 @@
                         Please provide a valid zip.
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
+            </div> -->
+            <!-- <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                     <label class="form-check-label" for="invalidCheck">
@@ -107,7 +206,7 @@
                         You must agree before submitting.
                     </div>
                 </div>
-            </div>
+            </div> -->
             <button class="btn btn-primary" type="submit">Submit form</button>
         </form>
 

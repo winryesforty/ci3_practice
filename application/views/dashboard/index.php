@@ -1,4 +1,9 @@
-
+<style>
+.view-modal-body .form-control{
+  background-color:#0000000a;
+}
+</style>
+    
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <!-- <div class="btn-toolbar mb-2 mb-md-0">
@@ -21,7 +26,7 @@
               <p class="container alert alert-success"> <?php echo $this->session->flashdata('message'); ?></p>
         <?php } ?>
         <table class="table table-striped table-sm">
-          <thead>
+          <thead class="thead-light">
             <tr>
               <th scope="col">First Name</th>
               <th scope="col">Middle  Name</th>
@@ -32,12 +37,12 @@
           </thead>
           <tbody>
             <?php if($users){ ?>
-              <?php foreach($users as $user): ?>
-                <tr>
+              <?php foreach($users as $key=>$user): ?>
+                <tr <?php echo $key % 2 === 0 ? "class='table-info'" : ""; ?> >
                   <td class='text-capitalize'><?php echo $user->first_name; ?></td>
                   <td class='text-capitalize'><?php echo $user->middle_name; ?></td>
                   <td class='text-capitalize'><?php echo $user->last_name; ?></td>
-                  <td class='text-capitalize bg-red'><img class="w-25 p-4" id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="frame img-fluid w-50 h-50"/></td>
+                  <td class='text-capitalize bg-red'><img class="w-25" id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="frame img-fluid w-50"/></td>
                   <td class='text-capitalize'>
                     <!-- <button type="button" class="d-inline btn btn-success">View</button>&nbsp; -->
                     <button type="button" class="d-inline btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $user->id; ?>">View</button><br/>
@@ -56,75 +61,79 @@
                             <h5 class="modal-title" id="exampleModalLabel">View User</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                          <div class="modal-body">
-                            <div class="form-row col-md-16">
-                              <div class="col-md-4 mb-3">
-                                <label for="validationCustom01">Profile Picture</label>
-                                  <img id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="frame img-fluid w-100 h-100"/>
+                          <!-- Start Modal Body -->
+                          <div class="modal-body view-modal-body">
+                            <div class="row d-flex flex-row-reverse">
+                              <div class="col-md-4 justify-content-center">
+                                <div class="col-md-10 mb-3 text-center flex-fill">
+                                  <label for="validationCustom01">Profile Picture</label>
+                                    <img id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="rounded frame img-fluid w-100 h-100"/>
+                                </div>
                               </div>
-                            </div>
-                            <div class="form-row col-md-2">
-                              <div class="col-md-4 mb-3">
-                                  <label>First name</label>
-                                  <div class="col-md-4 mb-3 form-control">
-                                    <?php echo $user->first_name; ?>
+                              <div class="col-md-8">
+                                <div class="form-row">
+                                  <div class="col-md-12 mb-3">
+                                      <label>First name</label>
+                                      <div class="col-md-12 mb-3 form-control">
+                                        <?php echo $user->first_name; ?>
+                                      </div>
                                   </div>
-                              </div>
-                            </div>
-                            <div class="form-row">
-                              <div class="col-md-4 mb-3">
-                                  <label>Middle name</label>
-                                  <div class="col-md-4 mb-3 form-control">
-                                    <?php echo $user->middle_name; ?>
+                                </div>
+                                <div class="form-row">
+                                  <div class="col-md-12 mb-3">
+                                      <label>Middle name</label>
+                                      <div class="col-md-12 mb-3 form-control">
+                                        <?php echo $user->middle_name; ?>
+                                      </div>
                                   </div>
-                              </div>
-                            </div>
-                            <div class="form-row">
-                              <div class="col-md-4 mb-3">
-                                  <label for="validationCustom02">Last name</label>
-                                  <div class="col-md-4 mb-3 form-control">
-                                    <?php echo $user->last_name; ?>
+                                </div>
+                                <div class="form-row">
+                                  <div class="col-md-12 mb-3">
+                                      <label for="validationCustom02">Last name</label>
+                                      <div class="col-md-4 mb-3 form-control">
+                                        <?php echo $user->last_name; ?>
+                                      </div>
                                   </div>
+                                </div>
                               </div>
                             </div>
-                            <div class="form-row col-md-4 mb-3">
-                                <label>Address</label>
+                            <div class="form-row col-md-12 mb-3">
+                                <label>Street Address</label>
                                 <div class="col-md-4 mb-3 form-control">
                                     <?php echo $user->street_address; ?>
                                 </div>
                             </div>
-                            <div class="form-row">
-                              <div class="col-md-4 mb-3">
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
                                   <label for="validationCustom03">City</label>
                                   <div class="col-md-4 mb-3 form-control">
                                     <?php echo $user->city; ?>
                                   </div>
                               </div>
-                            </div>
-                            <div class="form-row">
-                              <div class="col-md-4 mb-3">
+                              <div class="col-md-6 mb-3">
                                 <label for="validationCustom04">Province</label>
                                 <div class="col-md-4 mb-3 form-control">
                                     <?php echo $user->province; ?>
                                 </div>
                               </div>
                             </div>
-                            <div class="form-row">
-                              <div class="col-md-4 mb-3">
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
                                 <label for="validationCustom05">Zip Code</label>
-                                <div class="col-md-4 mb-3 form-control">
+                                <div class="col-md-5 mb-3 form-control">
                                   <?php echo $user->zip_code; ?>
                                 </div>
                               </div>
                             </div>
                           </div>
+                          <!-- End Modal Body -->
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <!-- View Modal Ends here  border: 1px solid #ced4da;-->
+                    <!-- View Modal Ends here-->
                     <!-- Edit Modal starts here  -->
                     <div class="myModal modal fade" id="ModalEdit<?php echo $user->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
@@ -133,7 +142,8 @@
                             <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                          <div class="modal-body">
+                          <!-- Start Modal Body -->
+                          <!-- <div class="modal-body">
                             <div class="form-row">
                               <div class="col-md-4 mb-3">
                                   <img id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="frame img-fluid w-100 h-100"/>
@@ -194,7 +204,96 @@
                                   </div>
                               </div>
                             </div>
+                          </div> -->
+                <!-- -->  <div class="modal-body edit-modal-body">
+                            <div class="row d-flex flex-row-reverse">
+                              <div class="col-md-4 justify-content-center">
+                                <div class="col-md-10 text-center flex-fill">
+                                  <label for="validationCustom01">Profile Picture</label>
+                                    <!-- <img id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="rounded frame img-fluid w-100 h-100"/> -->
+                                  <img id="frame" src="<?php echo base_url('assets/images/').$user->image_name; ?>" class="frame img-fluid w-100 h-100"/>
+                                  <input class="formFile form-control" type="file" name="user_image" class="formFile">
+                                  <div class="valid-feedback">
+                                      Looks good!
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-8">
+                                <div class="form-row">
+                                  <div class="col-md-12 mb-3">
+                                      <label>First name</label>
+                                      <div class="col-md-12 mb-3">
+                                        <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="<?php echo $user->first_name; ?>" name="first_name" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="col-md-12 mb-3">
+                                      <label>Middle name</label>
+                                      <div class="col-md-12 mb-3">
+                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Middle name" value="<?php echo $user->middle_name; ?>" name="middle_name" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="col-md-12 mb-3">
+                                      <label for="validationCustom02">Last name</label>
+                                      <div class="col-md-12 mb-3">
+                                        <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="<?php echo $user->last_name; ?>" name="last_name" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-row col-md-12 mb-3">
+                                <label>Street Address</label>
+                                <div class="col-md-12 mb-3">
+                                  <input type="text" value='<?php echo $user->street_address; ?>' name="street_address" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                  <label for="validationCustom03">City</label>
+                                  <div class="col-md-12 mb-3">
+                                    <input type="text" value='<?php echo $user->city; ?>' name="city" type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid city.
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="validationCustom04">Province</label>
+                                <div class="col-md-12 mb-3">
+                                  <input value='<?php echo $user->province; ?>' name="province" type="text" class="form-control" id="validationCustom04" placeholder="Province" required>
+                                  <div class="invalid-feedback">
+                                      Please provide a valid state.
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="validationCustom05">Zip Code</label>
+                                <div class="col-md-12 mb-3">
+                                  <input value='<?php echo $user->zip_code; ?>' name="zip_code" type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+                                  <div class="invalid-feedback">
+                                      Please provide a valid zip.
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
+                        <!--  -->
+                          <!-- Ends Modal Body -->
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -244,12 +343,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-   
-
    $(document).ready(function() {
       $(".formFile").on('change', function() {
           var val = $(this).val();
-          //alert(URL.createObjectURL(event.target.files[0]));
           $(this).closest('div').find('.frame').attr('src', URL.createObjectURL(event.target.files[0]));
       });
     });
