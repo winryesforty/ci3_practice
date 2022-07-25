@@ -2,6 +2,9 @@
 .view-modal-body .form-control{
   background-color:#0000000a;
 }
+body{
+  font:90%/1.45em"Helvetica Neue",HelveticaNeue,Helvetica,Arial,sans-serif !important;
+}
 </style>
     
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
